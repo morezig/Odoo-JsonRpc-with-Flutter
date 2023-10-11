@@ -1,4 +1,4 @@
-import 'package:odoo_common_code_latest/common/api_factory/odoo_response.dart';
+import 'odoo_response.dart';
 
 class OdooVersion {
   var _version, _serverSerie, _protocolVersion;

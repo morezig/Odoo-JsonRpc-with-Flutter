@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:odoo_common_code_latest/common/api_factory/dio_factory.dart';
-import 'package:odoo_common_code_latest/common/app.dart';
-import 'package:odoo_common_code_latest/common/config/dependencies.dart';
-import 'package:odoo_common_code_latest/common/config/prefs/pref_utils.dart';
+
+import 'common/api_factory/dio_factory.dart';
+import 'common/app.dart';
+import 'common/config/dependencies.dart';
+import 'common/config/prefs/pref_utils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

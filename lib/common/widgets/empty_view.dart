@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:odoo_common_code_latest/common/config/app_colors.dart';
-import 'package:odoo_common_code_latest/common/config/app_fonts.dart';
+
+import '../config/app_colors.dart';
+import '../config/app_fonts.dart';
 
 class EmptyView extends StatelessWidget {
   String errorMsg;

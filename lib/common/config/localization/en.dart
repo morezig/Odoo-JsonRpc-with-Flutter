@@ -1,4 +1,4 @@
-import 'package:odoo_common_code_latest/common/config/localization/localize.dart';
+import 'localize.dart';
 
 class EN {
   static Map<String, String> Lang() {

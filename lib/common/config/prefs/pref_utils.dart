@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-import 'package:odoo_common_code_latest/common/config/prefs/pref_keys.dart';
-import 'package:odoo_common_code_latest/src/authentication/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../src/authentication/models/user_model.dart';
+import 'pref_keys.dart';
 
 class PrefUtils {
   PrefUtils();
@@ -34,8 +35,7 @@ class PrefUtils {
 
   static Future<UserModel> getUser() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    Map<String, dynamic> user =
-        jsonDecode(preferences.getString(PrefKeys.user) ?? "{}");
+    Map<String, dynamic> user = jsonDecode(preferences.getString(PrefKeys.user) ?? "{}");
     return UserModel.fromJson(user);
   }
 

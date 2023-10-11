@@ -4,8 +4,9 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:odoo_common_code_latest/common/api_factory/api.dart';
-import 'package:odoo_common_code_latest/common/config/config.dart';
+
+import '../config/config.dart';
+import 'api.dart';
 
 typedef void OnError(String error, Map<String, dynamic> data);
 typedef void OnResponse<T>(T response);

@@ -1,18 +1,14 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:odoo_common_code_latest/common/config/app_colors.dart';
+
+import '../config/app_colors.dart';
 
 typedef void OnChangeCountryCode(CountryCode countryCode);
 typedef void OnFieldSubmitted(String text);
 
 class TextInput extends StatelessWidget {
   TextEditingController controller;
-  String? validationMsg,
-      hintText,
-      labelText,
-      helperText,
-      prefixText,
-      suffixText;
+  String? validationMsg, hintText, labelText, helperText, prefixText, suffixText;
   Widget? prefix, suffix;
   int? maxLength;
   bool? isPassword, countryCodeEnabled, isEnabled;
@@ -51,8 +47,7 @@ class TextInput extends StatelessWidget {
     return TextFormField(
       minLines: 1,
       maxLines: isPassword != null && isPassword == true ? 1 : 4,
-      onFieldSubmitted: (value) =>
-          onFieldSubmitted != null ? onFieldSubmitted!(value) : null,
+      onFieldSubmitted: (value) => onFieldSubmitted != null ? onFieldSubmitted!(value) : null,
       focusNode: focusNode ?? null,
       readOnly: isEnabled ?? false,
       style: TextStyle(

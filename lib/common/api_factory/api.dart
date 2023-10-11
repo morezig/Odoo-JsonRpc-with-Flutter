@@ -1,14 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:odoo_common_code_latest/common/api_factory/api_end_points.dart';
-import 'package:odoo_common_code_latest/common/api_factory/dio_factory.dart';
-import 'package:odoo_common_code_latest/common/api_factory/models/version_info_response.dart';
-import 'package:odoo_common_code_latest/common/config/config.dart';
-import 'package:odoo_common_code_latest/common/config/prefs/pref_utils.dart';
-import 'package:odoo_common_code_latest/common/utils/utils.dart';
-import 'package:odoo_common_code_latest/common/widgets/log.dart';
-import 'package:odoo_common_code_latest/src/authentication/models/user_model.dart';
 import 'package:uuid/uuid.dart';
+
+import '../../src/authentication/models/user_model.dart';
+import '../config/config.dart';
+import '../config/prefs/pref_utils.dart';
+import '../utils/utils.dart';
+import '../widgets/log.dart';
+import 'api_end_points.dart';
+import 'dio_factory.dart';
+import 'models/version_info_response.dart';
 
 enum ApiEnvironment { UAT, Dev, Prod }
 
@@ -54,10 +55,7 @@ class Api {
       print(e);
     }
     if (e is DioError) {
-      if (e.type == DioErrorType.connectionTimeout ||
-          e.type == DioErrorType.sendTimeout ||
-          e.type == DioErrorType.receiveTimeout ||
-          e.type == DioErrorType.unknown) {
+      if (e.type == DioErrorType.connectionTimeout || e.type == DioErrorType.sendTimeout || e.type == DioErrorType.receiveTimeout || e.type == DioErrorType.unknown) {
         onError('Server unreachable', {});
       } else if (e.type == DioErrorType.badResponse) {
         final response = e.response;
@@ -79,17 +77,9 @@ class Api {
   }
 
   //General Post Request
-  static Future<void> request(
-      {required HttpMethod method,
-      required String path,
-      required Map params,
-      required OnResponse onResponse,
-      required OnError onError}) async {
+  static Future<void> request({required HttpMethod method, required String path, required Map params, required OnResponse onResponse, required OnError onError}) async {
     Future.delayed(Duration(microseconds: 1), () {
-      if (path != ApiEndPoints.getVersionInfo &&
-          path != ApiEndPoints.getDb &&
-          path != ApiEndPoints.getDb9 &&
-          path != ApiEndPoints.getDb10) showLoading();
+      if (path != ApiEndPoints.getVersionInfo && path != ApiEndPoints.getDb && path != ApiEndPoints.getDb9 && path != ApiEndPoints.getDb10) showLoading();
     });
 
     Response response;
@@ -199,12 +189,7 @@ class Api {
     required OnResponse<UserModel> onResponse,
     required OnError onError,
   }) {
-    var params = {
-      "db": database,
-      "login": username,
-      "password": password,
-      "context": {}
-    };
+    var params = {"db": database, "login": username, "password": password, "context": {}};
 
     request(
       method: HttpMethod.post,
@@ -227,13 +212,7 @@ class Api {
     required OnResponse onResponse,
     required OnError onError,
   }) async {
-    callKW(
-        model: model,
-        method: "read",
-        args: [ids, fields],
-        kwargs: kwargs ?? null,
-        onResponse: onResponse,
-        onError: onError);
+    callKW(model: model, method: "read", args: [ids, fields], kwargs: kwargs ?? null, onResponse: onResponse, onError: onError);
   }
 
   static searchRead({
@@ -246,15 +225,7 @@ class Api {
     required OnResponse onResponse,
     required OnError onError,
   }) async {
-    var params = {
-      "context": getContext(),
-      "domain": domain,
-      "fields": fields,
-      "limit": limit,
-      "model": model,
-      "offset": offset,
-      "sort": order
-    };
+    var params = {"context": getContext(), "domain": domain, "fields": fields, "limit": limit, "model": model, "offset": offset, "sort": order};
     request(
       method: HttpMethod.post,
       path: ApiEndPoints.searchRead,
@@ -305,13 +276,7 @@ class Api {
     required OnResponse onResponse,
     required OnError onError,
   }) {
-    callKW(
-        model: model,
-        method: "create",
-        args: [values],
-        kwargs: kwargs ?? null,
-        onResponse: onResponse,
-        onError: onError);
+    callKW(model: model, method: "create", args: [values], kwargs: kwargs ?? null, onResponse: onResponse, onError: onError);
   }
 
   // Write record with ids and values
@@ -322,12 +287,7 @@ class Api {
     required OnResponse onResponse,
     required OnError onError,
   }) {
-    callKW(
-        model: model,
-        method: "write",
-        args: [ids, values],
-        onResponse: onResponse,
-        onError: onError);
+    callKW(model: model, method: "write", args: [ids, values], onResponse: onResponse, onError: onError);
   }
 
   // Remove record from system
@@ -338,13 +298,7 @@ class Api {
     required OnResponse onResponse,
     required OnError onError,
   }) async {
-    callKW(
-        model: model,
-        method: "unlink",
-        args: [ids],
-        kwargs: kwargs ?? null,
-        onResponse: onResponse,
-        onError: onError);
+    callKW(model: model, method: "unlink", args: [ids], kwargs: kwargs ?? null, onResponse: onResponse, onError: onError);
   }
 
   // Call json controller
@@ -424,13 +378,7 @@ class Api {
     required OnResponse onResponse,
     required OnError onError,
   }) {
-    callKW(
-        model: model,
-        method: "has_group",
-        args: right,
-        kwargs: kwargs ?? null,
-        onResponse: onResponse,
-        onError: onError);
+    callKW(model: model, method: "has_group", args: right, kwargs: kwargs ?? null, onResponse: onResponse, onError: onError);
   }
 
   static Map createPayload(Map params) {

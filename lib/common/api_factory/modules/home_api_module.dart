@@ -1,7 +1,7 @@
-import 'package:odoo_common_code_latest/common/api_factory/api.dart';
-import 'package:odoo_common_code_latest/common/api_factory/dio_factory.dart';
-import 'package:odoo_common_code_latest/common/utils/utils.dart';
-import 'package:odoo_common_code_latest/src/home/model/res_partner_model.dart';
+import '../../../src/home/model/res_partner_model.dart';
+import '../../utils/utils.dart';
+import '../api.dart';
+import '../dio_factory.dart';
 
 resPartnerApi({required OnResponse<ResPartnerModel> onResponse}) {
   Api.searchRead(

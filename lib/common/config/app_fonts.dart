@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:odoo_common_code_latest/common/config/app_colors.dart';
+
+import 'app_colors.dart';
 
 class AppFont {
   AppFont._();

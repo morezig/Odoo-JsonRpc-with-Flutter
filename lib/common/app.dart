@@ -4,13 +4,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:odoo_common_code_latest/common/api_factory/dio_factory.dart';
-import 'package:odoo_common_code_latest/common/config/app_colors.dart';
-import 'package:odoo_common_code_latest/common/config/app_fonts.dart';
-import 'package:odoo_common_code_latest/common/config/config.dart';
-import 'package:odoo_common_code_latest/common/config/localization/translations.dart';
-import 'package:odoo_common_code_latest/src/authentication/views/signin.dart';
-import 'package:odoo_common_code_latest/src/home/view/home.dart';
+
+import '../src/authentication/views/signin.dart';
+import '../src/home/view/home.dart';
+import 'api_factory/dio_factory.dart';
+import 'config/app_colors.dart';
+import 'config/app_fonts.dart';
+import 'config/config.dart';
+import 'config/localization/translations.dart';
 
 class App extends StatefulWidget {
   final bool isLoggedIn;

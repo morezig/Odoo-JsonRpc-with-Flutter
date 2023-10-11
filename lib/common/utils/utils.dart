@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:odoo_common_code_latest/common/api_factory/models/base_list.dart';
-import 'package:odoo_common_code_latest/common/api_factory/modules/authentication_module.dart';
-import 'package:odoo_common_code_latest/common/config/app_colors.dart';
-import 'package:odoo_common_code_latest/common/config/app_fonts.dart';
-import 'package:odoo_common_code_latest/common/config/app_images.dart';
-import 'package:odoo_common_code_latest/common/config/config.dart';
-import 'package:odoo_common_code_latest/common/config/localization/localize.dart';
-import 'package:odoo_common_code_latest/common/config/prefs/pref_utils.dart';
-import 'package:odoo_common_code_latest/common/widgets/log.dart';
+
+import '../api_factory/models/base_list.dart';
+import '../api_factory/modules/authentication_module.dart';
+import '../config/app_colors.dart';
+import '../config/app_fonts.dart';
+import '../config/app_images.dart';
+import '../config/config.dart';
+import '../config/localization/localize.dart';
+import '../config/prefs/pref_utils.dart';
+import '../widgets/log.dart';
 
 Future<void> ackAlert(
   BuildContext context,
@@ -70,12 +71,7 @@ hideLoading() {
   Get.back();
 }
 
-void showSnackBar(
-    {title,
-    message,
-    SnackPosition? snackPosition,
-    Color? backgroundColor,
-    Duration? duration}) {
+void showSnackBar({title, message, SnackPosition? snackPosition, Color? backgroundColor, Duration? duration}) {
   Get.showSnackbar(
     GetBar(
       title: title,
@@ -96,15 +92,11 @@ showWarning(message) {
 }
 
 bool validatePassword(String password) {
-  return RegExp(
-          r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~?]).{8,}$')
-      .hasMatch(password);
+  return RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~?]).{8,}$').hasMatch(password);
 }
 
 bool validateEmail(String email) {
-  return RegExp(
-          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-      .hasMatch(email);
+  return RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
 }
 
 bool validURL(String url) {
@@ -180,8 +172,7 @@ showCustomBottomSheet({
                                 elevation: 0.0,
                                 color: AppColors.blueButtonColor,
                                 onPressed: () {
-                                  var isSelectedItems =
-                                      list!.where((e) => e.isSelected).toList();
+                                  var isSelectedItems = list!.where((e) => e.isSelected).toList();
                                   if (isSelectedItems.length == 0) {
                                     // showWarning(Localize.selectAnyItem.tr);
                                   } else {
@@ -228,9 +219,7 @@ showCustomBottomSheet({
                                 list[index].name!,
                                 style: AppFont.Body1_Regular(),
                               ),
-                              list[index].isSelected
-                                  ? Icon(Icons.done)
-                                  : SizedBox()
+                              list[index].isSelected ? Icon(Icons.done) : SizedBox()
                             ],
                           ),
                           onTap: () {
@@ -327,9 +316,7 @@ showLogoutDialog() {
   );
 }
 
-Future<String> getImageUrl(
-    {required String model, required String field, required String id}) async {
+Future<String> getImageUrl({required String model, required String field, required String id}) async {
   String session = await PrefUtils.getToken();
-  return Config.OdooDevURL +
-      "/web/image?model=$model&field=$field&$session&id=$id";
+  return Config.OdooDevURL + "/web/image?model=$model&field=$field&$session&id=$id";
 }

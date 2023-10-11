@@ -1,15 +1,16 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
-import 'package:odoo_common_code_latest/common/api_factory/api.dart';
-import 'package:odoo_common_code_latest/common/config/config.dart';
-import 'package:odoo_common_code_latest/common/config/prefs/pref_utils.dart';
-import 'package:odoo_common_code_latest/common/utils/utils.dart';
-import 'package:odoo_common_code_latest/common/widgets/log.dart';
-import 'package:odoo_common_code_latest/src/authentication/controllers/signin_controller.dart';
-import 'package:odoo_common_code_latest/src/authentication/models/user_model.dart';
-import 'package:odoo_common_code_latest/src/authentication/views/signin.dart';
-import 'package:odoo_common_code_latest/src/home/view/home.dart';
+
+import '../../../src/authentication/controllers/signin_controller.dart';
+import '../../../src/authentication/models/user_model.dart';
+import '../../../src/authentication/views/signin.dart';
+import '../../../src/home/view/home.dart';
+import '../../config/config.dart';
+import '../../config/prefs/pref_utils.dart';
+import '../../utils/utils.dart';
+import '../../widgets/log.dart';
+import '../api.dart';
 
 getVersionInfoAPI() {
   Api.getVersionInfo(

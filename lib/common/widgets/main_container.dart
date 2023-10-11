@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:odoo_common_code_latest/common/config/app_fonts.dart';
+
+import '../config/app_fonts.dart';
 
 class MainContainer extends StatelessWidget {
   String? appBarTitle;
@@ -35,8 +36,7 @@ class MainContainer extends StatelessWidget {
               elevation: elevation ?? 0.0,
               centerTitle: true,
               actions: actions,
-              title: Text(appBarTitle ?? '',
-                  style: AppFont.Title_H6_Medium(color: Colors.white)),
+              title: Text(appBarTitle ?? '', style: AppFont.Title_H6_Medium(color: Colors.white)),
             )
           : null,
       body: SafeArea(

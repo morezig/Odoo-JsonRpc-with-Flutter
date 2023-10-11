@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:odoo_common_code_latest/common/api_factory/modules/authentication_module.dart';
-import 'package:odoo_common_code_latest/common/config/app_colors.dart';
-import 'package:odoo_common_code_latest/common/config/localization/localize.dart';
-import 'package:odoo_common_code_latest/common/utils/utils.dart';
-import 'package:odoo_common_code_latest/common/widgets/custom_button.dart';
-import 'package:odoo_common_code_latest/common/widgets/main_container.dart';
-import 'package:odoo_common_code_latest/common/widgets/text_input.dart';
+
+import '../../../common/api_factory/modules/authentication_module.dart';
+import '../../../common/config/app_colors.dart';
+import '../../../common/config/localization/localize.dart';
+import '../../../common/utils/utils.dart';
+import '../../../common/widgets/custom_button.dart';
+import '../../../common/widgets/main_container.dart';
+import '../../../common/widgets/text_input.dart';
 
 class SignIn extends StatefulWidget {
   @override
